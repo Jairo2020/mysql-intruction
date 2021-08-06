@@ -24,7 +24,8 @@ SHOW COLUMNS FROM NameTable;
 * **Swich case**
 
   ```sql
-  BEGIN CASE p_op
+  BEGIN 
+    CASE p_op
 
       WHEN 0 THEN
          UPDATE categories SET name = p_newValue
@@ -34,6 +35,8 @@ SHOW COLUMNS FROM NameTable;
          UPDATE categories SET name = p_newValue
       WHERE code = p_code;
 
-  END CASE;
+    END CASE;
+  
+  END;
 
   ```
