@@ -4,9 +4,7 @@
 
 ###### CONTENIDO
 
-> - Ver datos de bases de datos.
-
-Ver datos de la base de datos
+###### * Ver datos de la base de datos
 
 **Ver todas las bases de datos**
 
