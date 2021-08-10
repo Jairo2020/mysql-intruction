@@ -2,28 +2,29 @@
 
 ### Instrucción de algunos comando mysql
 
-
-
-* **Ver todas las bases de datos**
-
-
+- **Ver todas las bases de datos**
 
 ```sql
 SHOW DATABASES;
 ```
 
-* **Ver tablas de base de datos**
+- **Ver tablas de base de datos**
 
 ```sql
 SHOW TABLES FROM NameDatabase;
 ```
 
-* **Ver nombres de columna**
+- **Ver nombres de columna**
 
 ```sql
 SHOW COLUMNS FROM NameTable;
 ```
 
+```sql
+SELECT table_schema, table_name, column_name, data_type FROM information_schema.columns
+WHERE table_schema = 'nameDatabase'
+ORDER BY column_name, table_name;
+```
 
 **Swich case**
 
@@ -42,14 +43,13 @@ END CASE;
 
 ```
 
-
 **PROCEDIMIENTOS DE ALMACENADO**
 
-* **Visualizar todos los procedimientos de almacenado.**
+- **Visualizar todos los procedimientos de almacenado.**
 
 La primera sentencia muestra información resumida de todos los procedimientos de almacenado.
 
-Y la segunda muestra información a detalle de todos los procedimientos de  almacenado.
+Y la segunda muestra información a detalle de todos los procedimientos de almacenado.
 
 ```sql
 SHOW PROCEDURE STATUS;
@@ -67,9 +67,9 @@ select ROUTINE_SCHEMA,
     ROUTINE_TYPE,
     DATA_TYPE as TYPE,
     NULL as PARENT_SCHEMA,
-    NULL as PARENT_NAME 
+    NULL as PARENT_NAME
 from INFORMATION_SCHEMA.ROUTINES
-union 
+union
 select TRIGGER_SCHEMA,
     TRIGGER_NAME,
     'TRIGGER',
@@ -79,21 +79,21 @@ select TRIGGER_SCHEMA,
 from INFORMATION_SCHEMA.TRIGGERS;
 ```
 
-* **Devuelve los nombres de los procedimientos**
+- **Devuelve los nombres de los procedimientos**
 
 ```sql
-SELECT ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES 
+SELECT ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES
    WHERE ROUTINE_TYPE = 'PROCEDURE'
-   ORDER BY ROUTINE_NAME 
+   ORDER BY ROUTINE_NAME
 ```
 
-* **Seleccionar procedimiento específico.**
+- **Seleccionar procedimiento específico.**
 
 ```sql
 SHOW CREATE PROCEDURE nameProcedure
 ```
 
-* **Visualizar procedimientos pertenecientes a una base de datos.**
+- **Visualizar procedimientos pertenecientes a una base de datos.**
 
 ```sql
 SHOW PROCEDURE STATUS WHERE Db = 'nameDataBase';
@@ -115,7 +115,7 @@ GRANT SELECT ON mysql.proc TO 'youruser'@'yourhost' IDENTIFIED BY 'yourpass' ;
 Código alternativo y solo muestra los nombres de los procedimientos de almacenado.
 
 ```sql
-SELECT 
+SELECT
     routine_name
 FROM
     information_schema.routines
